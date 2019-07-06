@@ -11,8 +11,12 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST,PORT))
 reply = ''
 
+def start():
+	print "--------------------------Bienvenido Clemente--------------------------"
+	print_help()
+
 def print_help():
-	print "------------------------------------------------------------------------"
+	#print "------------------------------------------------------------------------"
 	print "\nOPCIONES:\n"
 	print "1. rotacion"
 	print "	   Imprime 5 veces la rotacion (en grados) en uno de los ejes del giroscopio. Cada dato se separa 1.5 segundos.\n"
@@ -71,10 +75,12 @@ def rot_acc(socket_s, respuesta, modo):
 #operaciones = { '0': ayuda, '1': rotacion}
 
 #Lets loop awaiting for your input
+start()
+
 while True:
-	print reply + " hello"
+	#print reply + " hello"
 	if reply == '' or reply == '9':
-		if reply == 9:
+		if reply == '9':
 			print 'Comando no valido\n'
 		seleccion = raw_input('Introduce el comando: (Escriba \'ayuda\' para ver todas las opciones) ')
 		
