@@ -25,13 +25,14 @@ def print_help():
 	print "------------------------------------------------------------------------"
 	
 def rotacion(socket_s, respuesta):
+	socket_s.send('11')
 	eje = raw_input('Seleccione el eje (x, y, z): ')
 	if eje == 'x':
-		envio ='rotacion -x'
+		envio ='x'
 	elif eje == 'y':
-		envio = 'rotacion -y'
+		envio = 'y'
 	elif eje == 'z':
-		envio = 'rotacion -z'
+		envio = 'z'
 	else:
 		envio = 'None'
 	
@@ -71,7 +72,7 @@ while True:
 
 	if seleccion == 'ayuda':
 		print_help()
-	elif seleccion == 'rotacion':
+	elif seleccion == '1':
 		rotacion(s,reply)
 	elif seleccion == 'quit':
 		s.send(seleccion)

@@ -79,7 +79,7 @@ def get_five_rot_acc(letter, modo):
     
 def comando_rotaciones_acceleraciones(socket_s, palabra,modo,respuesta):
     print 'Mandando info'
-    array = get_five_rot_acc(palabra[10], modo)
+    array = get_five_rot_acc(palabra, modo)
     count =0
     print len(array)
     while count < len(array):
@@ -117,14 +117,17 @@ print 'Connected'
 
 
 while True:
-	data = conn.recv(11)
+	data = conn.recv(2)
+	
 	print 'I sent a message back in response to: ' + data
 	reply = ''
 
 	# process your message
-	if data == 'rotacion -x' or data == 'rotacion -y' or data == 'rotacion -z':
+	if data == '11':#'rotacion -x' or data == 'rotacion -y' or data == 'rotacion -z':
+		data = conn.recv(1) #Recibe el eje
 		comando_rotaciones_acceleraciones(conn, data, 'r', reply)
-	elif data == 'acceleracion -x' or data == 'acceleracion -y' or data == 'acceleracion -z':
+	elif data == '15':
+		data = conn.recv(1)
 		comando_rotaciones_acceleraciones(conn, data, 'a', reply)
 		"""print 'Mandando info de la rotacion'
 		array = get_five_rotations(data[10])
