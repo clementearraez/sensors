@@ -143,8 +143,9 @@ while True:
 		reply = 'OK, I have done the important thing you have asked me!'
 
 	#and so on and on until...
-	elif data == 'quit':
-		conn.send('Terminating')
+	elif data == '5':
+		print 'Terminating'
+		conn.send('1')
 		conn.close()
 		break
 	else:
