@@ -73,7 +73,9 @@ def rot_acc(socket_s, respuesta, modo):
 #Lets loop awaiting for your input
 while True:
 	print reply + " hello"
-	if reply == '' or reply == 'OK' or reply == 'Unknown command':
+	if reply == '' or reply == '9':
+		if reply == 9:
+			print 'Comando no valido\n'
 		seleccion = raw_input('Introduce el comando: (Escriba \'ayuda\' para ver todas las opciones) ')
 		
 

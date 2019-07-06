@@ -129,18 +129,6 @@ while True:
 	elif data == '2':
 		data = conn.recv(1)
 		comando_rotaciones_acceleraciones(conn, data, 'a', reply)
-		"""print 'Mandando info de la rotacion'
-		array = get_five_rotations(data[10])
-		count =0
-		while count < len(array):
-			conn.send(str(len(array[count])))
-			reply =array[count]
-			count=count+1
-			conn.send(reply)
-		#reply = rotations()
-		#conn.close()"""
-	elif data == 'This is important':
-		reply = 'OK, I have done the important thing you have asked me!'
 
 	#and so on and on until...
 	elif data == '5':
@@ -149,7 +137,7 @@ while True:
 		conn.close()
 		break
 	else:
-		reply = 'Unknown command'
+		reply = '9'
 		conn.send(reply)
 
 	# Sending reply
