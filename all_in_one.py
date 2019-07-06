@@ -70,7 +70,7 @@ def get_five_rot_acc(letter, modo):
     array_num = ["hola"]
     array_num[0] = rot_acc(letter, modo)
     count = 0
-    while count <1:
+    while count <3:
       time.sleep(1.75)
       array_num.append(rot_acc(letter, modo))
       count = count +1

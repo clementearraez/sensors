@@ -22,11 +22,13 @@ def print_help():
 	print "	   Imprime el valor de la humedad en el suelo en el momento\n"
 	print "4. ambiente"
 	print "	   Imprime los valores de temperatura y humedad en el ambiente\n"
+	print "5. quit"
+	print "	   Salir de la aplicacion"
 	print "------------------------------------------------------------------------"
 	
 def rot_acc(socket_s, respuesta, modo):
 	socket_s.send(modo)
-	if modo = '1':
+	if modo == '1':
 		titulo = 'ROTACION'
 	else:
 		titulo = 'ACCELERACION'
@@ -53,7 +55,7 @@ def rot_acc(socket_s, respuesta, modo):
 		time.sleep(0.1)
 		print '......100%\n'
 		i = 1
-		while i<=2:
+		while i<=4:
 			longitud = socket_s.recv(1)
 			#print longitud
 			respuesta = socket_s.recv(int(longitud))
@@ -82,7 +84,7 @@ while True:
 	elif seleccion == '2':
 		rot_acc(s, reply, '2')
 	elif seleccion == 'quit':
-		s.send(seleccion)
+		s.send('5')
 		break
 	else:
 		s.send(seleccion)
