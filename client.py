@@ -24,8 +24,13 @@ def print_help():
 	print "	   Imprime los valores de temperatura y humedad en el ambiente\n"
 	print "------------------------------------------------------------------------"
 	
-def rotacion(socket_s, respuesta):
-	socket_s.send('1')
+def rot_acc(socket_s, respuesta, modo):
+	socket_s.send(modo)
+	if modo = '1':
+		titulo = 'ROTACION'
+	else:
+		titulo = 'ACCELERACION'
+	
 	eje = raw_input('Seleccione el eje (x, y, z): ')
 	if eje == 'x':
 		envio ='x'
@@ -52,11 +57,10 @@ def rotacion(socket_s, respuesta):
 			longitud = socket_s.recv(1)
 			#print longitud
 			respuesta = socket_s.recv(int(longitud))
-			print "TIME", tiempo.strftime("%d/%m/%Y, %H:%M:%S"), " - - - - "+ eje.capitalize() + " ROTATION: " + respuesta
+			print "TIME", tiempo.strftime("%d/%m/%Y, %H:%M:%S"), " - - - - "+ eje.capitalize() + " " + titulo + ": " + respuesta
 			tiempo = tiempo + timedelta(seconds=1.5)
 			i= i+1
 		respuesta = 'OK'	
-		print '\nRotacion confirmed\n'
 	else:
 		print "Valor no valido. Anulando operacion"
 
@@ -74,7 +78,9 @@ while True:
 	if seleccion == 'ayuda':
 		print_help()
 	elif seleccion == '1':
-		rotacion(s,reply)
+		rot_acc(s,reply,'1')
+	elif seleccion == '2':
+		rot_acc(s, reply, '2')
 	elif seleccion == 'quit':
 		s.send(seleccion)
 		break
