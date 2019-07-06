@@ -117,16 +117,16 @@ print 'Connected'
 
 
 while True:
-	data = conn.recv(2)
+	data = conn.recv(1)
 	
 	print 'I sent a message back in response to: ' + data
 	reply = ''
 
 	# process your message
-	if data == '11':#'rotacion -x' or data == 'rotacion -y' or data == 'rotacion -z':
+	if data == '1':#'rotacion -x' or data == 'rotacion -y' or data == 'rotacion -z':
 		data = conn.recv(1) #Recibe el eje
 		comando_rotaciones_acceleraciones(conn, data, 'r', reply)
-	elif data == '15':
+	elif data == '2':
 		data = conn.recv(1)
 		comando_rotaciones_acceleraciones(conn, data, 'a', reply)
 		"""print 'Mandando info de la rotacion'

@@ -25,7 +25,7 @@ def print_help():
 	print "------------------------------------------------------------------------"
 	
 def rotacion(socket_s, respuesta):
-	socket_s.send('11')
+	socket_s.send('1')
 	eje = raw_input('Seleccione el eje (x, y, z): ')
 	if eje == 'x':
 		envio ='x'
@@ -35,7 +35,7 @@ def rotacion(socket_s, respuesta):
 		envio = 'z'
 	else:
 		envio = 'None'
-	
+		
 	if envio != 'None':
 		socket_s.send(envio)
 	
@@ -59,7 +59,8 @@ def rotacion(socket_s, respuesta):
 		print '\nRotacion confirmed\n'
 	else:
 		print "Valor no valido. Anulando operacion"
-		
+
+
 
 #operaciones = { '0': ayuda, '1': rotacion}
 
