@@ -136,9 +136,9 @@ while True:
 		conn.send('1')
 		conn.close()
 		break
-	else:
-		reply = '9'
-		conn.send(reply)
+	#else:
+	#	reply = '9'
+	#	conn.send(reply)
 
 	# Sending reply
 	#conn.send(reply)

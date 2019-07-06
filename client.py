@@ -94,5 +94,5 @@ while True:
 			print 'Hubo problemas cerrando la conexion. La sesion se ha cerrado de manera forzada.'
 		break
 	else:
-		s.send(seleccion)
+		reply = '9'
 	
