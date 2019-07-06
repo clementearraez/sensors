@@ -123,7 +123,7 @@ while True:
 	reply = ''
 
 	# process your message
-	if data == '1':#'rotacion -x' or data == 'rotacion -y' or data == 'rotacion -z':
+	if data == '1':
 		data = conn.recv(1) #Recibe el eje
 		comando_rotaciones_acceleraciones(conn, data, 'r', reply)
 	elif data == '2':
@@ -136,9 +136,7 @@ while True:
 		conn.send('1')
 		conn.close()
 		break
-	#else:
-	#	reply = '9'
-	#	conn.send(reply)
+	
 
 	# Sending reply
 	#conn.send(reply)
