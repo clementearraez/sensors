@@ -20,8 +20,8 @@ def print_help():
 	print "\nOPCIONES:\n"
 	print "1. rotacion"
 	print "	   Imprime 5 veces la rotacion (en grados) en uno de los ejes del giroscopio. Cada dato se separa 1.5 segundos.\n"
-	print "2. acceleracion"
-	print "	   Imprime 5 veces la acceleracion (en m/s^2) en uno de los ejes del giroscopio. Cada dato se separa 1.5 segundos. \n"
+	print "2. aceleracion"
+	print "	   Imprime 5 veces la aceleracion (en m/s^2) en uno de los ejes del giroscopio. Cada dato se separa 1.5 segundos. \n"
 	print "3. humedad"
 	print "	   Imprime el valor de la humedad en el suelo en el momento\n"
 	print "4. ambiente"
@@ -35,7 +35,7 @@ def rot_acc(socket_s, respuesta, modo):
 	if modo == '1':
 		titulo = 'ROTACION'
 	else:
-		titulo = 'ACCELERACION'
+		titulo = 'ACELERACION'
 	
 	eje = raw_input('Seleccione el eje (x, y, z): ')
 	if eje == 'x':

@@ -77,7 +77,7 @@ def get_five_rot_acc(letter, modo):
     return array_num
     
     
-def comando_rotaciones_acceleraciones(socket_s, palabra,modo,respuesta):
+def comando_rotaciones_aceleraciones(socket_s, palabra,modo,respuesta):
     print 'Mandando info'
     array = get_five_rot_acc(palabra, modo)
     count =0
@@ -109,7 +109,7 @@ bus = smbus.SMBus(1) # bus = smbus.SMBus(0) fuer Revision 1
 address = 0x68       # via i2cdetect
 bus.write_byte_data(address, power_mgmt_1, 0)
 
-s.listen(5)
+s.listen(1)
 print 'Socket awaiting messages'
 (conn, addr) = s.accept()
 print 'Connected'
@@ -125,10 +125,10 @@ while True:
 	# process your message
 	if data == '1':
 		data = conn.recv(1) #Recibe el eje
-		comando_rotaciones_acceleraciones(conn, data, 'r', reply)
+		comando_rotaciones_aceleraciones(conn, data, 'r', reply)
 	elif data == '2':
 		data = conn.recv(1)
-		comando_rotaciones_acceleraciones(conn, data, 'a', reply)
+		comando_rotaciones_aceleraciones(conn, data, 'a', reply)
 
 	#and so on and on until...
 	elif data == '5':
