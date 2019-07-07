@@ -119,6 +119,7 @@ def connection(socket_s):
 (conn, addr) = connection(s)
 
 while True:
+	print conn
 	data = conn.recv(1)
 	
 	print 'I sent a message back in response to: ' + data
@@ -137,6 +138,7 @@ while True:
 		print 'Terminating'
 		conn.send('1')
 		conn.close()
+		print conn
 		break
 	
 

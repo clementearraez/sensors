@@ -97,14 +97,13 @@ while True:
 	elif seleccion == '2':
 		rot_acc(s, reply, '2')
 	elif seleccion == '5':#Quit
-		s.close()
-		"""s.send('5')
+		s.send('5')
 		reply = s.recv(1)
 		if reply == '1':
 			print 'Cerrando correctamente la conexion'
 		else:
 			print 'Hubo problemas cerrando la conexion. La sesion se ha cerrado de manera forzada.'
-		break"""
+		break
 	else:
 		reply = '9'
 	
