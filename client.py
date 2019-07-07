@@ -6,15 +6,34 @@ from datetime import timedelta
 
 HOST = '192.168.1.145' # Enter IP or Hostname of your server
 PORT = 12345 # Pick an open Port (1000+ recommended), must match the server port
-
+HOST_PASIVO = '192.168.1.132'
 PORT_PASIVO = 12346 #Utilizo una segunda conexion para la monitorizacion activa
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 
 s.connect((HOST,PORT))
 
 reply = ''
+
+def conexion_pasiva():
+	p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	print 'Socket created'
+	try:
+		p.bind((HOST_PASIVO, PORT_PASIVO)) ##Hacer el control c de signal handler y cerrar la conexion del server antiguo
+
+	except socket.error:
+		print 'Bind failed'
+
+	p.listen(1)
+	print 'Esperando respuesta del servidor'
+	(conn, addr) = p.accept()
+	print 'Monitorizacion pasiva: ACTIVADA'
+	while True:
+		print 'Esperando instrucciones por Clemente'
+		time.sleep(2)
+	
+
 
 def start():
 	print "--------------------------Bienvenido Clemente--------------------------"
@@ -23,15 +42,17 @@ def start():
 def print_help():
 	#print "------------------------------------------------------------------------"
 	print "\nOPCIONES:\n"
-	print "1. rotacion"
+	print "1. Rotacion"
 	print "	   Imprime 5 veces la rotacion (en grados) en uno de los ejes del giroscopio. Cada dato se separa 1.5 segundos.\n"
-	print "2. aceleracion"
+	print "2. Aceleracion"
 	print "	   Imprime 5 veces la aceleracion (en m/s^2) en uno de los ejes del giroscopio. Cada dato se separa 1.5 segundos. \n"
-	print "3. humedad"
+	print "3. Humedad"
 	print "	   Imprime el valor de la humedad en el suelo en el momento\n"
-	print "4. ambiente"
+	print "4. Ambiente"
 	print "	   Imprime los valores de temperatura y humedad en el ambiente\n"
-	print "5. quit"
+	print "5. Monitorizacion Pasiva"
+	print "	   Se procede a hacer una monitorizacion pasiva en la que el usuario unicamente espera alertas\n"
+	print "6. quit"
 	print "	   Salir de la aplicacion"
 	print "------------------------------------------------------------------------"
 	
@@ -96,8 +117,19 @@ while True:
 		rot_acc(s,reply,'1')
 	elif seleccion == '2':
 		rot_acc(s, reply, '2')
-	elif seleccion == '5':#Quit
+		
+	elif seleccion == '5': #Monitorizacion pasiva
 		s.send('5')
+		reply = s.recv(1)
+		print reply
+		if reply == '1':
+			print 'La solicitud ha llegado al servidor'
+			s.close()
+			#reply=''
+			#time.sleep(3)
+			conexion_pasiva()
+	elif seleccion == '6':#Quit
+		s.send('6')
 		reply = s.recv(1)
 		if reply == '1':
 			print 'Cerrando correctamente la conexion'
