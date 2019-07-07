@@ -116,10 +116,13 @@ def connection(socket_s):
 	print 'Connected'
 	return (conn, addr)
 
-(conn, addr) = connection(s)
+
+conectado = 0 #Si no esta conectado, llamará a connection(s)
 
 while True:
-	print conn
+	if conectado = 0:
+		(conn, addr) = connection(s)
+		conectado = 1
 	data = conn.recv(1)
 	
 	print 'I sent a message back in response to: ' + data
@@ -138,8 +141,8 @@ while True:
 		print 'Terminating'
 		conn.send('1')
 		conn.close()
-		print conn
-		break
+		conectado = 0
+		#break
 	
 
 	# Sending reply
