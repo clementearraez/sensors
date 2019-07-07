@@ -7,8 +7,13 @@ from datetime import timedelta
 HOST = '192.168.1.145' # Enter IP or Hostname of your server
 PORT = 12345 # Pick an open Port (1000+ recommended), must match the server port
 
+PORT_PASIVO = 12346 #Utilizo una segunda conexion para la monitorizacion activa
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 s.connect((HOST,PORT))
+
 reply = ''
 
 def start():
@@ -92,13 +97,14 @@ while True:
 	elif seleccion == '2':
 		rot_acc(s, reply, '2')
 	elif seleccion == '5':#Quit
-		s.send('5')
+		s.close()
+		"""s.send('5')
 		reply = s.recv(1)
 		if reply == '1':
 			print 'Cerrando correctamente la conexion'
 		else:
 			print 'Hubo problemas cerrando la conexion. La sesion se ha cerrado de manera forzada.'
-		break
+		break"""
 	else:
 		reply = '9'
 	
