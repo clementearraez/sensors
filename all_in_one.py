@@ -139,17 +139,22 @@ while True:
 	elif data == '5':
 		print 'Solicitud de monitorizcion pasiva recibida'
 		reply = '1' #Como muestra de OK
-		print reply
-		conn.send(reply)
-		conn.close()
-		s.close()
-		time.sleep(6)
-		p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		#print reply
+		#conn.send(reply)
+		#conn.close()
+		#s.close()
+		#time.sleep(6)
+		#p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		
 		while True:
-				p.connect((addr[0],12346))
-				time.sleep(2)
-				print 'Esperando mas comandos'
+		#		p.connect((addr[0],12346))
+		#		time.sleep(2)
+		#		print 'Esperando mas comandos'
+		#		alerta = monitorizacion()
+		#		if alerta == 1
+					#reply = '8' #Problemas --> Especificar el tipo de problema
+					#conn.send(reply)
+				#elif tiempo_total = 30 min ... --> Mandar informe con todo
 
 	#and so on and on until...
 	elif data == '6':

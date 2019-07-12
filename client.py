@@ -6,8 +6,8 @@ from datetime import timedelta
 
 HOST = '192.168.1.145' # Enter IP or Hostname of your server
 PORT = 12345 # Pick an open Port (1000+ recommended), must match the server port
-HOST_PASIVO = '192.168.1.132'
-PORT_PASIVO = 12346 #Utilizo una segunda conexion para la monitorizacion activa
+#HOST_PASIVO = '192.168.1.132'
+#PORT_PASIVO = 12346 #Utilizo una segunda conexion para la monitorizacion activa
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -16,7 +16,7 @@ s.connect((HOST,PORT))
 
 reply = ''
 
-def conexion_pasiva():
+"""def conexion_pasiva():
 	p = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	print 'Socket created'
 	try:
@@ -32,7 +32,7 @@ def conexion_pasiva():
 	while True:
 		print 'Esperando instrucciones por Clemente'
 		time.sleep(2)
-	
+"""
 
 
 def start():
@@ -123,11 +123,14 @@ while True:
 		reply = s.recv(1)
 		print reply
 		if reply == '1':
-			print 'La solicitud ha llegado al servidor'
-			s.close()
+			print 'La solicitud ha llegado al servidor. Esperando resultados'
+			while True:
+				print 'Pulse ... para acabar con esto'
+				reply = s.recv(1)
+				#Analyse reply
 			#reply=''
 			#time.sleep(3)
-			conexion_pasiva()
+			#conexion_pasiva()
 	elif seleccion == '6':#Quit
 		s.send('6')
 		reply = s.recv(1)
