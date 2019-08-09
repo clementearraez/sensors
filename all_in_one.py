@@ -3,6 +3,8 @@
 #!/usr/bin/python
 #netstat -na | grep "8080"
 #https://www.cyberciti.biz/faq/linux-command-forcibly-close-socket-ports-in-time_wait-state/
+#Invoke-RestMethod ipinfo.io/ip
+#irm ipinfo.io/ip 
 import socket #TCP connections
 import smbus #Gyroscope
 import math

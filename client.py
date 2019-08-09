@@ -1,7 +1,11 @@
 import socket
+import subprocess
+from subprocess import Popen, PIPE
+import commands
 import time 
 from datetime import datetime 
 from datetime import timedelta 
+
 #netstat -na | Select-String "8080"
 
 HOST = '192.168.1.145' # Enter IP or Hostname of your server
@@ -12,7 +16,7 @@ PORT = 12345 # Pick an open Port (1000+ recommended), must match the server port
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
-s.connect((HOST,PORT))
+#s.connect((HOST,PORT))
 
 reply = ''
 
@@ -139,6 +143,9 @@ while True:
 		else:
 			print 'Hubo problemas cerrando la conexion. La sesion se ha cerrado de manera forzada.'
 		break
+	elif seleccion == '7':
+		result = commands.getstatusoutput('echo hello') #subprocess.check_output(['echo', 'hello'])
+		print result
 	else:
 		reply = '9'
 	
