@@ -1,6 +1,5 @@
 import socket
 import subprocess
-from subprocess import Popen, PIPE
 import commands
 import time 
 from datetime import datetime 
@@ -8,15 +7,13 @@ from datetime import timedelta
 
 #netstat -na | Select-String "8080"
 
-HOST = '192.168.1.145' # Enter IP or Hostname of your server
+HOST = '5.35.166.148'#'10.52.117.20' # Enter IP or Hostname of your server
 PORT = 12345 # Pick an open Port (1000+ recommended), must match the server port
-#HOST_PASIVO = '192.168.1.132'
-#PORT_PASIVO = 12346 #Utilizo una segunda conexion para la monitorizacion activa
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
-#s.connect((HOST,PORT))
+s.connect((HOST,PORT))
 
 reply = ''
 
@@ -123,18 +120,7 @@ while True:
 		rot_acc(s, reply, '2')
 		
 	elif seleccion == '5': #Monitorizacion pasiva
-		s.send('5')
-		reply = s.recv(1)
-		print reply
-		if reply == '1':
-			print 'La solicitud ha llegado al servidor. Esperando resultados'
-			while True:
-				print 'Pulse ... para acabar con esto'
-				reply = s.recv(1)
-				#Analyse reply
-			#reply=''
-			#time.sleep(3)
-			#conexion_pasiva()
+		print "hello"
 	elif seleccion == '6':#Quit
 		s.send('6')
 		reply = s.recv(1)
