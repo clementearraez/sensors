@@ -39,9 +39,9 @@ ciclo_1 = 5 #El programa duerme durante 1 hora para despues coger otra muestra
 #Log_riego.txt
 f1=open("/home/pi/Desktop/Hologram/log_riego.txt", "a+")
 
-def send_message_to_thingspeak(menssage):
+def send_message_to_thingspeak(mensaje_):
   try:
-    f = urllib2.urlopen(baseURL+"&field1=%s"%(menssage))
+    f = urllib2.urlopen(baseURL+"&field1=%s"%(mensaje_))
     f.close()
   except:
     f1.write('Conexion fallida, intentando de nuevo...')
